@@ -1,26 +1,214 @@
 @import "tailwindcss";
+@import "tw-animate-css";
+@import "shadcn/tailwind.css";
 
-:root {
-  --background: #ffffff;
-  --foreground: #171717;
-}
-
+/*
+ * Wake Mobile Café. Colours sampled from Adam's Wake and Wavy's designs
+ * (10.13.26 drafts) and the Wake brand guide.
+ */
 @theme inline {
+  --color-paper: #fbf9f5;
+  --color-sand: #edeae3;
+  --color-mint: #e3f6f4;
+  --color-tile: #bbe2df;
+  --color-teal: #21857a;
+  --color-teal-deep: #0a6b60;
+  --color-seafoam: #67c3b9;
+  --color-ink: #00101b;
+  --color-navy: #002d3f;
+  --color-slate: #2c4954;
+  --color-gold: #dbbb49;
+  --color-pine: #003c36;
+
+  --font-sans: var(--font-work-sans);
+  --font-heading: var(--font-poppins);
+  --font-script: var(--font-caveat);
+
   --color-background: var(--background);
   --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
+  --color-ring: var(--ring);
+  --color-input: var(--input);
+  --color-border: var(--border);
+  --color-destructive: var(--destructive);
+  --color-accent-foreground: var(--accent-foreground);
+  --color-accent: var(--accent);
+  --color-muted-foreground: var(--muted-foreground);
+  --color-muted: var(--muted);
+  --color-secondary-foreground: var(--secondary-foreground);
+  --color-secondary: var(--secondary);
+  --color-primary-foreground: var(--primary-foreground);
+  --color-primary: var(--primary);
+  --color-popover-foreground: var(--popover-foreground);
+  --color-popover: var(--popover);
+  --color-card-foreground: var(--card-foreground);
+  --color-card: var(--card);
+  --radius-sm: calc(var(--radius) * 0.6);
+  --radius-md: calc(var(--radius) * 0.8);
+  --radius-lg: var(--radius);
+  --radius-xl: calc(var(--radius) * 1.4);
+  --radius-2xl: calc(var(--radius) * 1.8);
+  --radius-3xl: calc(var(--radius) * 2.2);
+  --radius-4xl: calc(var(--radius) * 2.6);
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
+:root {
+  --background: #fbf9f5;
+  --foreground: #00101b;
+  --card: #ffffff;
+  --card-foreground: #00101b;
+  --popover: #ffffff;
+  --popover-foreground: #00101b;
+  --primary: #21857a;
+  --primary-foreground: #ffffff;
+  --secondary: #edeae3;
+  --secondary-foreground: #00101b;
+  --muted: #edeae3;
+  --muted-foreground: #4f6670;
+  --accent: #e3f6f4;
+  --accent-foreground: #00101b;
+  --destructive: #c2410c;
+  --border: #dcd6cb;
+  --input: #cfc8bb;
+  --ring: #21857a;
+  --radius: 0.75rem;
+}
+
+/* Page gutter and max width, shared by every section and the header. */
+@utility shell {
+  width: 100%;
+  max-width: 84rem;
+  margin-inline: auto;
+  padding-inline: 1.25rem;
+  @media (width >= 48rem) {
+    padding-inline: 2rem;
   }
 }
 
-body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+@utility eyebrow {
+  font-family: var(--font-sans);
+  font-size: 0.8125rem;
+  font-weight: 600;
+  letter-spacing: 0.14em;
+  line-height: 1.4;
+  text-transform: uppercase;
+  color: var(--color-teal-deep);
+}
+
+@utility display {
+  font-family: var(--font-heading);
+  font-weight: 800;
+  letter-spacing: -0.035em;
+  line-height: 0.98;
+  text-wrap: balance;
+}
+
+/* Wavy's hard offset shadow, used on framed photos and cards. */
+@utility hard-shadow {
+  box-shadow: 10px 10px 0 0 var(--color-ink);
+}
+
+@utility link-underline {
+  text-decoration-line: underline;
+  text-decoration-thickness: 2px;
+  text-underline-offset: 0.45em;
+  text-decoration-color: var(--color-seafoam);
+  transition: text-decoration-color 150ms;
+  &:hover {
+    text-decoration-color: currentColor;
+  }
+}
+
+@keyframes ticker {
+  to {
+    transform: translateX(-50%);
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border outline-ring/50;
+  }
+  html {
+    @apply font-sans;
+    scroll-padding-top: 5.5rem;
+    @media (prefers-reduced-motion: no-preference) {
+      scroll-behavior: smooth;
+    }
+  }
+  body {
+    @apply bg-background text-foreground;
+  }
+  button:not(:disabled),
+  [role="button"]:not(:disabled) {
+    cursor: pointer;
+  }
+}
+
+/*
+ * Leaflet, branded. Kept outside any @layer on purpose: leaflet.css is
+ * unlayered, and unlayered rules beat Tailwind's layers.
+ */
+.leaflet-container {
+  background: #e3f6f4;
+  font-family: var(--font-work-sans), sans-serif;
+}
+/* Mute the OpenStreetMap palette to a warm grey that sits on the paper. */
+.leaflet-container .leaflet-tile-pane {
+  filter: grayscale(1) sepia(0.18) brightness(1.04) contrast(0.88);
+}
+.leaflet-container .wake-pin {
+  background: none;
+  border: 0;
+  filter: drop-shadow(0 6px 10px rgb(0 16 27 / 0.18));
+}
+.leaflet-container .wake-town {
+  background: #dbbb49;
+  border: 2px solid #00101b;
+  border-radius: 9999px;
+}
+.leaflet-container .wake-dot {
+  background: #21857a;
+  border: 2px solid #ffffff;
+  border-radius: 9999px;
+  box-shadow: 0 0 0 1px rgb(0 16 27 / 0.25);
+}
+.leaflet-container .leaflet-tooltip.wake-label {
+  background: #00101b;
+  color: #ffffff;
+  border: 0;
+  border-radius: 8px;
+  box-shadow: none;
+  padding: 5px 9px;
+  font-family: var(--font-poppins), sans-serif;
+  font-size: 12px;
+  font-weight: 700;
+}
+.leaflet-container .leaflet-tooltip.wake-town-label {
+  background: transparent;
+  border: 0;
+  box-shadow: none;
+  padding: 0;
+  color: #00101b;
+  font-family: var(--font-poppins), sans-serif;
+  font-size: 13px;
+  font-weight: 700;
+  text-shadow: 0 0 2px #fff, 0 0 4px #fff, 0 0 8px #fff;
+}
+.leaflet-container .leaflet-tooltip.wake-label::before,
+.leaflet-container .leaflet-tooltip.wake-town-label::before {
+  display: none;
+}
+/* !important because leaflet.css loads later with an equally specific rule. */
+.leaflet-container .leaflet-bar {
+  border: 2px solid #00101b !important;
+  border-radius: 10px;
+  box-shadow: 3px 3px 0 #00101b !important;
+  overflow: hidden;
+}
+.leaflet-container .leaflet-bar a {
+  color: #00101b;
+}
+.leaflet-container .leaflet-control-attribution {
+  background: rgb(255 255 255 / 0.85);
+  font-size: 10px;
 }
