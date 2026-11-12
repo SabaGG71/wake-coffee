@@ -1,3 +1,5 @@
+import { packagesReady } from "@/content/packages"
+
 // Every contact detail on the site lives here, so nothing from another client
 // can hide in a component. Empty strings stay hidden.
 // Sources: wakeck.com and wakeck.com/mobile-coffee-service (read 2026-10-28),
@@ -27,8 +29,9 @@ export const site = {
 }
 
 // Hrefs start with "/" so they work from /menu too. On the homepage they only scroll.
+// "Packages" shows once the client's package text is in (see packages.ts).
 export const nav = [
-  { label: "Packages", href: "/#packages" },
+  ...(packagesReady ? [{ label: "Packages", href: "/#packages" }] : []),
   { label: "Menu", href: "/menu" },
   { label: "Events", href: "/#events" },
   { label: "Service area", href: "/#area" },

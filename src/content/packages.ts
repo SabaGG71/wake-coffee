@@ -10,6 +10,11 @@
 //
 // TEST COPY BELOW. It only exists to check the layout at 390 and 1440. Replace
 // every entry with the client's text before anyone outside LocalEyes sees it.
+//
+// While this is false the packages section, its "Packages" nav link and the
+// hero's "See the packages" button stay hidden, so the shared Vercel link never
+// shows TEST copy. Flip it to true once the client's text is in.
+export const packagesReady = false
 
 export type Pour = "espresso" | "draft" | "both"
 

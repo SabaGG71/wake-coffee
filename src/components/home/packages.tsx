@@ -2,7 +2,7 @@ import Link from "next/link"
 import { PlusIcon } from "lucide-react"
 import { Button } from "@/components/ui/button"
 import { cn } from "@/lib/utils"
-import { packages, upgrades, type Pour } from "@/content/packages"
+import { packages, packagesReady, upgrades, type Pour } from "@/content/packages"
 
 // What each package pours, so Tap and Espresso never blur together.
 const segments: Record<Pour, ("espresso" | "draft")[]> = {
@@ -31,6 +31,8 @@ function PourTag({ pour }: { pour: Pour }) {
 }
 
 export function Packages() {
+  if (!packagesReady) return null
+
   return (
     <section id="packages" className="shell py-20 lg:py-28">
       <div className="flex flex-col gap-6 md:flex-row md:items-end md:justify-between">

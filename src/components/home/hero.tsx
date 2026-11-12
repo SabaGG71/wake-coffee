@@ -4,6 +4,7 @@ import { Photo } from "@/components/photo"
 import { cn } from "@/lib/utils"
 import { facts } from "@/content/home"
 import { site } from "@/content/site"
+import { packagesReady } from "@/content/packages"
 
 export function Hero() {
   return (
@@ -22,7 +23,7 @@ export function Hero() {
             <Link href="/quote">Get my custom quote</Link>
           </Button>
           <Button asChild size="xl" variant="line">
-            <a href="#packages">See the packages</a>
+            {packagesReady ? <a href="#packages">See the packages</a> : <Link href="/menu">See the menu</Link>}
           </Button>
         </div>
 
