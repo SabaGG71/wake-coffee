@@ -17,6 +17,9 @@ Open http://localhost:3000. The quote form is the client's FlashQuotes form (`sr
 
 - `src/content/site.ts`: every phone number, link, social handle and the FlashQuotes form id. Nothing else should hard-code contact details.
 - `src/content/home.ts`: homepage copy, lists and which photo goes where.
+- `/quote` (`src/app/quote/page.tsx`, `src/components/quote/quote-desk.tsx`): the FlashQuotes form as its own page, for links from Google, Instagram or the old wakeck.com/quote. The section id is `quote`, so every "Get a quote" button works there too. The footer links to it.
+- `src/content/menu.ts`: the /menu page, from Wake Coffee & Kitchen's printed menu (no prices, as on the rest of the site). Sections live in `src/components/menu/*`.
+- `src/content/packages.ts`: the five packages and the upgrades, in the client's words, verbatim. `pour` sets the Espresso / Draft label on each card. No prices, hours or guest counts.
 - `src/components/home/*`: one file per homepage section.
 - `src/app/globals.css`: brand colours (sampled from Adam's designs and the brand guide) and shared utilities (`shell`, `eyebrow`, `display`, `hard-shadow`).
 
@@ -33,8 +36,9 @@ Open http://localhost:3000. The quote form is the client's FlashQuotes form (`sr
 ## SEO
 
 - H1 and title: "Coffee catering in Monmouth & Ocean County, NJ".
-- JSON-LD (`src/components/json-ld.tsx`): LocalBusiness with areaServed, plus FAQPage built from `src/content/faq.ts`.
-- FAQ answers stay in the HTML (native `<details>`), so search engines read them.
+- JSON-LD (`src/components/json-ld.tsx`): LocalBusiness with areaServed.
+- FAQ removed at the client's request (Carrie, 2026-11-10). It lives in git history if it comes back.
+- Package details stay in the HTML (native `<details>`), so search engines read them.
 - Social image: `src/app/opengraph-image.jpg`.
 
 ## Still open
@@ -47,3 +51,7 @@ Open http://localhost:3000. The quote form is the client's FlashQuotes form (`sr
 - Food photos for the "Coffee, plus a real menu" section.
 - Whether the mobile café has its own Facebook page.
 - Adam's sign-off on the draft lines in `src/content/home.ts` (event descriptions, step copy).
+- Package texts: `src/content/packages.ts` still holds TEST copy. Paste the client's text before Kent sees it.
+- Kent/Zane: package order (client's simplest-first vs. our biggest-first), whether "How booking works" stays (Carrie asked to remove it), and separate NYC, Philadelphia and New Jersey pages.
+- Menu: the breakfast page (1/4 of the printed menu), the current seasonal list (printed one is "Summer"), what VA and VGA mean, and whether every item can be served at events. Lunch combos are left out for now.
+- Hero fact "Truck + 2 carts": check it once the Tap Truck is confirmed as a separate vehicle.

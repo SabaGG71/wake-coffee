@@ -1,3 +1,4 @@
+import Link from "next/link"
 import { Mascot } from "@/components/logo"
 import { events } from "@/content/home"
 
@@ -16,9 +17,9 @@ export function Events() {
           <p className="mt-6 max-w-md text-lg leading-[1.7] text-white/70">
             We bring the bar, the baristas, and the food if you want it. You tell us where.
           </p>
-          <a href="#quote" className="mt-8 inline-block text-[1.0625rem] font-semibold text-seafoam link-underline">
+          <Link href="/quote" className="mt-8 inline-block text-[1.0625rem] font-semibold text-seafoam link-underline">
             → Check your date
-          </a>
+          </Link>
         </div>
 
         <ul className="border-t border-white/15">

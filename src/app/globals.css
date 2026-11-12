@@ -135,6 +135,16 @@
       scroll-behavior: smooth;
     }
   }
+  /* /menu adds a sticky section bar under the header: clear both, for anchor
+     jumps and for keyboard focus alike. */
+  html:has(nav[aria-label="Menu sections"]) {
+    scroll-padding-top: 10.5rem;
+  }
+  a,
+  button,
+  summary {
+    touch-action: manipulation;
+  }
   body {
     @apply bg-background text-foreground;
   }

@@ -26,15 +26,16 @@ export const site = {
   facebook: "", // TODO: ask whether the mobile café has its own page.
 }
 
+// Hrefs start with "/" so they work from /menu too. On the homepage they only scroll.
 export const nav = [
-  { label: "Setups", href: "#setups" },
-  { label: "Menu", href: "#menu" },
-  { label: "Events", href: "#events" },
-  { label: "Service area", href: "#area" },
-  { label: "FAQ", href: "#faq" },
+  { label: "Packages", href: "/#packages" },
+  { label: "Menu", href: "/menu" },
+  { label: "Events", href: "/#events" },
+  { label: "Service area", href: "/#area" },
 ]
 
 // "One team, one standard, three ways to get it." from Adam's Wake design.
+// Shown under the hero (src/components/home/family.tsx).
 export const family = [
   {
     name: "Wake Coffee & Kitchen",

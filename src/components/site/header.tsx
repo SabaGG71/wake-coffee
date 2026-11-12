@@ -6,8 +6,8 @@ import { family, nav } from "@/content/site"
 
 export function Header() {
   // Mirrors the "Wake Mobile Café ↗" pill on Adam's Wake header, but scrolls
-  // to the family block in the footer: the site links nowhere else.
-  const wake = { label: family[0].name, href: "#family" }
+  // to the family block under the hero: the site links nowhere else.
+  const wake = { label: family[0].name, href: "/#family" }
 
   return (
     <header className="sticky top-0 z-40 border-b border-ink/10 bg-paper/90 backdrop-blur-md">
@@ -18,26 +18,26 @@ export function Header() {
 
         <nav aria-label="Main" className="hidden items-center gap-8 lg:flex">
           {nav.map((item) => (
-            <a
+            <Link
               key={item.href}
               href={item.href}
               className="text-[15px] font-semibold text-ink transition-colors hover:text-teal-deep"
             >
               {item.label}
-            </a>
+            </Link>
           ))}
         </nav>
 
         {/* The two buttons sit together, set well apart from the nav links. */}
         <div className="flex items-center gap-2.5 lg:ml-2 xl:ml-4">
-          <a
+          <Link
             href={wake.href}
             className="hidden h-12 items-center rounded-xl border border-teal px-4 text-[15px] font-semibold text-teal-deep transition-colors hover:bg-mint xl:inline-flex"
           >
             {wake.label}
-          </a>
+          </Link>
           <Button asChild size="xl" className="h-10 px-4 sm:h-12 sm:px-6">
-            <a href="#quote">Get a quote</a>
+            <Link href="/quote">Get a quote</Link>
           </Button>
           <MobileNav items={nav} wake={wake} />
         </div>

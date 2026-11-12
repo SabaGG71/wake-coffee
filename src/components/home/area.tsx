@@ -1,3 +1,4 @@
+import Link from "next/link"
 import { ServiceMap } from "@/components/home/service-map"
 import { counties } from "@/content/area"
 import { site } from "@/content/site"
@@ -38,9 +39,9 @@ export function Area() {
             ))}
           </div>
 
-          <a href="#quote" className="mt-10 inline-block text-[1.0625rem] font-semibold text-teal-deep link-underline">
+          <Link href="/quote" className="mt-10 inline-block text-[1.0625rem] font-semibold text-teal-deep link-underline">
             → Not on the list? Check your date
-          </a>
+          </Link>
         </div>
 
         <div className="relative min-h-[26rem] border-t-2 border-ink bg-mint lg:border-t-0 lg:border-l-2">

@@ -1,3 +1,4 @@
+import Link from "next/link"
 import { Button } from "@/components/ui/button"
 import { Photo } from "@/components/photo"
 import { cn } from "@/lib/utils"
@@ -8,7 +9,7 @@ export function Hero() {
   return (
     <section className="shell grid items-center gap-14 pt-10 pb-16 sm:pt-14 lg:grid-cols-[1.1fr_1fr] lg:gap-16 lg:pt-16 lg:pb-24">
       <div>
-        <p className="eyebrow text-balance">Wake Mobile Café · Mobile espresso bar</p>
+        <p className="eyebrow text-balance">Coffee and food catering</p>
         <h1 className="display mt-5 text-[clamp(2.6rem,9vw,3.5rem)] text-ink lg:text-[72px]">
           Coffee catering in <span className="text-teal">{site.region}, NJ.</span>
         </h1>
@@ -18,10 +19,10 @@ export function Hero() {
         </p>
         <div className="mt-9 flex flex-wrap gap-3">
           <Button asChild size="xl">
-            <a href="#quote">Get my custom quote</a>
+            <Link href="/quote">Get my custom quote</Link>
           </Button>
           <Button asChild size="xl" variant="line">
-            <a href="#setups">See the truck &amp; carts</a>
+            <a href="#packages">See the packages</a>
           </Button>
         </div>
 

@@ -1,3 +1,5 @@
+import Link from "next/link"
+import { Button } from "@/components/ui/button"
 import { Photo } from "@/components/photo"
 import { included } from "@/content/home"
 
@@ -36,9 +38,14 @@ export function Menu() {
             ))}
           </ul>
 
-          <a href="#quote" className="mt-10 inline-block text-[1.0625rem] font-semibold text-teal-deep link-underline">
-            → Ask for the event menu
-          </a>
+          <div className="mt-10 flex flex-wrap items-center gap-x-8 gap-y-4">
+            <Button asChild size="xl" variant="line">
+              <Link href="/menu">See the full menu</Link>
+            </Button>
+            <Link href="/quote" className="text-[1.0625rem] font-semibold text-teal-deep link-underline">
+              → Ask for the event menu
+            </Link>
+          </div>
         </div>
       </div>
     </section>

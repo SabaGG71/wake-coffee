@@ -1,8 +1,7 @@
 import { base, towns } from "@/content/area"
-import { faq } from "@/content/faq"
 import { family, site } from "@/content/site"
 
-// LocalBusiness + FAQPage structured data. Image and url join once the
+// LocalBusiness structured data. Image and url join once the
 // production domain is set in site.url.
 export function JsonLd() {
   const absolute = (path: string) => (site.url ? new URL(path, site.url).toString() : undefined)
@@ -33,14 +32,6 @@ export function JsonLd() {
         ],
         sameAs: [site.instagram.url],
         parentOrganization: { "@type": "Organization", name: family[0].name, url: family[0].url },
-      },
-      {
-        "@type": "FAQPage",
-        mainEntity: faq.map((item) => ({
-          "@type": "Question",
-          name: item.q,
-          acceptedAnswer: { "@type": "Answer", text: item.a },
-        })),
       },
     ],
   }

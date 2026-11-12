@@ -16,35 +16,6 @@ export const ticker = [
   "Monmouth & Ocean County",
 ]
 
-export const setups = [
-  {
-    photo: "wake-coffee-mobile-truck",
-    photoLabel: "The coffee truck at an event",
-    photoAlt: "The grey Wake Mobile Café truck with its service window open at an indoor event",
-    kicker: "The truck",
-    title: "The full Wake experience, wherever you are.",
-    body: "Fully equipped with the same pro gear we use in our shop and staffed by expert baristas. Small enough to fit where most food trucks can’t, bold enough to stand out anywhere.",
-    goodFor: [
-      "Company events + employee appreciation",
-      "Weddings + receptions",
-      "High-volume brand activations",
-    ],
-  },
-  {
-    photo: "wake-coffee-and-kitchen-mobile-cart-3",
-    photoLabel: "A coffee cart set up indoors",
-    photoAlt: "A white Wake Coffee & Kitchen coffee cart set up under an event tent",
-    kicker: "The carts · two of them",
-    title: "Craft coffee where trucks can’t go.",
-    body: "Same pro gear, same Wake quality, a much smaller footprint. Our carts roll into indoor venues and tighter spaces, so your event doesn’t have to compromise on coffee.",
-    goodFor: [
-      "Indoor venues + tighter spaces",
-      "Private parties + special events",
-      "Teacher appreciation + community events",
-    ],
-  },
-]
-
 export const included = [
   { title: "Espresso program", line: "Handcrafted drinks from trained baristas." },
   { title: "Scratch kitchen", line: "Breakfast and lunch from Wake Coffee & Kitchen." },
