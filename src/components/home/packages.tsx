@@ -135,9 +135,10 @@ export function Packages() {
 
       {/* Phones: one swipe row, the next card peeking in, so five packages take
           one card's height. md+: three across, then two wider ones, so no row is
-          left half empty. items-start: opening one card doesn't stretch the rest.
+          left half empty. Cards in a row share one height, and the price, details
+          and button sit on the same line at the bottom of each.
           relative: screen-reader-only text inside can't widen the page. */}
-      <ul className="relative -mx-5 mt-4 flex snap-x snap-mandatory scroll-px-5 items-start gap-4 overflow-x-auto px-5 pt-1 pb-5 [scrollbar-width:none] after:w-1 after:shrink-0 after:content-[''] md:mx-0 md:mt-12 md:grid md:grid-cols-2 md:gap-6 md:overflow-visible md:px-0 md:pt-0 md:pb-0 md:after:hidden lg:mt-14 lg:grid-cols-6 lg:gap-7 [&::-webkit-scrollbar]:hidden">
+      <ul className="relative -mx-5 mt-4 flex snap-x snap-mandatory scroll-px-5 gap-4 overflow-x-auto px-5 pt-1 pb-5 [scrollbar-width:none] after:w-1 after:shrink-0 after:content-[''] md:mx-0 md:mt-12 md:grid md:grid-cols-2 md:gap-6 md:overflow-visible md:px-0 md:pt-0 md:pb-0 md:after:hidden lg:mt-14 lg:grid-cols-6 lg:gap-7 [&::-webkit-scrollbar]:hidden">
         {packages.map((pkg, i) => {
           const wide = i >= 3
           return (
@@ -161,45 +162,48 @@ export function Packages() {
                 </p>
                 <p className="mt-3 text-[1rem] leading-[1.7] text-slate">{pkg.short}</p>
 
-                <StartingAt value={pkg.startingAt} />
+                {/* Pinned to the bottom, so every card in a row lines up. */}
+                <div className="mt-auto">
+                  <StartingAt value={pkg.startingAt} />
 
-                {/* Native <details>: folded for people, still in the HTML for Google. */}
-                <details className="group mt-4 border-t border-ink/10">
-                  <summary className="flex cursor-pointer list-none items-center justify-between gap-4 py-4 text-[0.9375rem] font-semibold text-ink [&::-webkit-details-marker]:hidden">
-                    <span>
-                      Full details<span className="sr-only"> for {pkg.name}</span>
-                    </span>
-                    <PlusIcon
-                      className="size-5 shrink-0 text-teal-deep transition-transform duration-200 group-open:rotate-45"
-                      aria-hidden
-                    />
-                  </summary>
-                  <div className="pb-5">
-                    <div className="space-y-3 text-[0.9375rem] leading-[1.7] text-slate">
-                      {pkg.full.map((para) => (
-                        <p key={para}>{para}</p>
-                      ))}
+                  {/* Native <details>: folded for people, still in the HTML for Google. */}
+                  <details className="group mt-4 border-t border-ink/10">
+                    <summary className="flex cursor-pointer list-none items-center justify-between gap-4 py-4 text-[0.9375rem] font-semibold text-ink [&::-webkit-details-marker]:hidden">
+                      <span>
+                        Full details<span className="sr-only"> for {pkg.name}</span>
+                      </span>
+                      <PlusIcon
+                        className="size-5 shrink-0 text-teal-deep transition-transform duration-200 group-open:rotate-45"
+                        aria-hidden
+                      />
+                    </summary>
+                    <div className="pb-5">
+                      <div className="space-y-3 text-[0.9375rem] leading-[1.7] text-slate">
+                        {pkg.full.map((para) => (
+                          <p key={para}>{para}</p>
+                        ))}
+                      </div>
+                      <p className="mt-6 text-xs font-semibold tracking-[0.14em] text-slate/75 uppercase">At a glance</p>
+                      <dl className="mt-2 divide-y divide-ink/10 border-y border-ink/10">
+                        {pkg.glance.map((row) => (
+                          <div key={row.label} className="grid gap-0.5 py-2.5 sm:grid-cols-[7.5rem_1fr] sm:gap-4">
+                            <dt className="text-[0.875rem] font-semibold text-ink">{row.label}</dt>
+                            <dd className="text-[0.9375rem] leading-snug text-slate">{row.value}</dd>
+                          </div>
+                        ))}
+                      </dl>
                     </div>
-                    <p className="mt-6 text-xs font-semibold tracking-[0.14em] text-slate/75 uppercase">At a glance</p>
-                    <dl className="mt-2 divide-y divide-ink/10 border-y border-ink/10">
-                      {pkg.glance.map((row) => (
-                        <div key={row.label} className="grid gap-0.5 py-2.5 sm:grid-cols-[7.5rem_1fr] sm:gap-4">
-                          <dt className="text-[0.875rem] font-semibold text-ink">{row.label}</dt>
-                          <dd className="text-[0.9375rem] leading-snug text-slate">{row.value}</dd>
-                        </div>
-                      ))}
-                    </dl>
-                  </div>
-                </details>
+                  </details>
 
-                {/* Adam's own button line for each package. */}
-                <Button
-                  asChild
-                  size="xl"
-                  className="mt-2 h-auto min-h-12 w-full py-3 text-center leading-snug whitespace-normal"
-                >
-                  <Link href="/quote">{pkg.cta}</Link>
-                </Button>
+                  {/* Adam's own button line for each package. */}
+                  <Button
+                    asChild
+                    size="xl"
+                    className="mt-2 h-auto min-h-12 w-full py-3 text-center leading-snug whitespace-normal"
+                  >
+                    <Link href="/quote">{pkg.cta}</Link>
+                  </Button>
+                </div>
               </div>
             </li>
           )
