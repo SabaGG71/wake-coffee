@@ -2,13 +2,15 @@
 // designs. Anything not taken from those is marked as a draft for Adam.
 
 export const facts = [
-  { label: "Setups", value: "Truck + 2 carts" },
   { label: "Based in", value: "Wall Township, NJ" },
+  // Adam, 2026-11-17.
+  { label: "As seen at", value: "NJ Coffee Festival" },
   { label: "On the menu", value: "Coffee + food" },
 ]
 
 export const ticker = [
-  "Full-service specialty coffee",
+  "Draft lattes + cold brew on tap",
+  "Handcrafted espresso",
   "House-made syrups",
   "Scratch-made breakfast + lunch",
   "Expert baristas",
@@ -22,14 +24,26 @@ export const included = [
   { title: "House-made", line: "Syrups, dressings, and baked goods." },
 ]
 
-// Draft lines under each event type, for Adam to check.
+// Adam's top three (email, 2026-11-17, "in no order"), then the events he'd
+// take when the schedule allows. The lines under each are ours, built from the
+// "Ideal for" lists in his packages document.
 export const events = [
-  { name: "Company events + employee appreciation", line: "Office coffee catering for breakfasts, conferences, and thank-you days." },
-  { name: "Weddings + receptions", line: "A mobile espresso bar for brunch weddings and receptions." },
-  { name: "High-volume brand activations", line: "Built for long lines and big crowds." },
-  { name: "Private parties + special events", line: "Birthdays, showers, graduations, and get-togethers." },
-  { name: "Teacher appreciation + community events", line: "Schools, fundraisers, and town days." },
+  {
+    name: "Corporate + teacher appreciation",
+    line: "Office breakfasts, employee appreciation, conferences, and thank-you days at school.",
+  },
+  { name: "Brand activations + grand openings", line: "The kei truck draws the crowd, and draft service keeps the line moving." },
+  { name: "Weddings + post-wedding brunches", line: "Espresso, draft lattes, or both, for the reception or the morning after." },
+  { name: "Private parties", line: "Birthdays, showers, graduations, and get-togethers." },
+  { name: "Open houses, farmers markets + community events", line: "When our schedule allows." },
 ]
+
+// Adam, 2026-11-17: "We've done events with ..."
+export const pastEvents = {
+  with: ["Clean Ocean Action", "FPA Engineers", "Beacon Events"],
+  beacon: ["Asbury Park Santa Run", "Shamrock ’N Roll 5k"],
+  seenAt: "NJ Coffee Festival",
+}
 
 export const steps = [
   {

@@ -5,10 +5,10 @@ import { findBrand } from "@/lib/assets"
 import { site } from "@/content/site"
 
 // What one quote can cover. Same labels and colours as the package cards.
-// Lines come from wakeck.com and the printed menu.
+// Lines come from Adam's packages document and wakeck.com.
 const onIt = [
-  { tag: "Espresso", tone: "bg-teal text-white", line: "Handcrafted drinks from trained baristas." },
-  { tag: "Draft", tone: "bg-gold text-ink", line: "Draft lattes, like our signature Cookie Butter." },
+  { tag: "Espresso", tone: "bg-teal text-white", line: "Handcrafted drinks, made to order by trained Wake baristas." },
+  { tag: "Draft", tone: "bg-gold text-ink", line: "Signature draft lattes and cold brew, poured in seconds." },
   { tag: "Food", tone: "bg-mint text-teal-deep", line: "Scratch-made breakfast and lunch from Wake Coffee & Kitchen." },
 ]
 

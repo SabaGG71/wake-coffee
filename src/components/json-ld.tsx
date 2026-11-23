@@ -1,5 +1,6 @@
 import { base, towns } from "@/content/area"
 import { family, site } from "@/content/site"
+import { packages, packagesReady } from "@/content/packages"
 
 // LocalBusiness structured data. Image and url join once the
 // production domain is set in site.url.
@@ -32,6 +33,17 @@ export function JsonLd() {
         ],
         sameAs: [site.instagram.url],
         parentOrganization: { "@type": "Organization", name: family[0].name, url: family[0].url },
+        // The five packages as named services. No prices until Adam fills them in.
+        ...(packagesReady && {
+          hasOfferCatalog: {
+            "@type": "OfferCatalog",
+            name: "Mobile coffee packages",
+            itemListElement: packages.map((p) => ({
+              "@type": "Offer",
+              itemOffered: { "@type": "Service", name: p.name, description: p.short },
+            })),
+          },
+        }),
       },
     ],
   }

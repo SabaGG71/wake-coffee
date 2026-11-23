@@ -14,9 +14,9 @@ export function Area() {
             Coffee catering across {site.region}.
           </h2>
           <p className="mt-5 text-[1.0625rem] leading-[1.7] text-slate">
-            Wake Mobile Café is based in {site.base}, right next to Belmar. We bring the coffee truck or a cart to
-            weddings, offices, and events across both counties, and we also travel to events in New Jersey,
-            Pennsylvania, and New York City.
+            Wake Mobile Café is based in {site.base}, right next to Belmar. We bring the Tap Truck or a cart to
+            weddings, offices, and events across both counties and all over New Jersey, and we’ll travel to
+            Philadelphia and New York City.
           </p>
 
           <div className="mt-9 space-y-7">

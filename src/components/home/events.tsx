@@ -1,6 +1,6 @@
 import Link from "next/link"
 import { Mascot } from "@/components/logo"
-import { events } from "@/content/home"
+import { events, pastEvents } from "@/content/home"
 
 export function Events() {
   return (
@@ -17,6 +17,16 @@ export function Events() {
           <p className="mt-6 max-w-md text-lg leading-[1.7] text-white/70">
             We bring the bar, the baristas, and the food if you want it. You tell us where.
           </p>
+          {/* Proof from Adam: real names, as plain text. */}
+          <div className="mt-8 max-w-md border-t border-white/15 pt-6">
+            <p className="text-xs font-semibold tracking-[0.14em] text-white/55 uppercase">We’ve done events with</p>
+            <p className="mt-2 font-heading text-lg leading-snug font-bold">
+              {pastEvents.with.slice(0, -1).join(", ")} and {pastEvents.with.at(-1)}
+            </p>
+            <p className="mt-1 text-white/65">
+              Including the {pastEvents.beacon.join(" and the ")}. As seen at the {pastEvents.seenAt}.
+            </p>
+          </div>
           <Link href="/quote" className="mt-8 inline-block text-[1.0625rem] font-semibold text-seafoam link-underline">
             → Check your date
           </Link>
